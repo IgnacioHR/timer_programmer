@@ -1,0 +1,7 @@
+{
+  "domain": "timer_programmer",
+  "name": "Timer Programmer",
+  "documentation": "https://www.home-assistant.io/integrations/timer_programmmer",
+  "codeowners": ["@IgnacioHR"],
+  "quality_scale": "internal"
+}

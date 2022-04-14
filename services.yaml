@@ -1,0 +1,49 @@
+# Describes the format for available Number entity services
+
+set_value:
+  name: Set
+  description: Set the value of a Timer Programmer entity.
+  target:
+    entity:
+      domain: timer_programmer
+  fields:
+    value:
+      name: Value
+      description: The target value the entity should be set to.
+      example: 42
+      selector:
+        text:
+
+toggle_bit:
+  name: Toggle Bit
+  description: Toggle a single bit in the programmer.
+  target:
+    entity:
+      domain: timer_programmer
+  fields:
+    bit:
+      name: Bit
+      description: Bit to toggle in the timer programmer.
+
+turn_off_bit:
+  name: Turn off a single Bit
+  description: Turn off a single bit in the programmer.
+  target:
+    entity:
+      domain: timer_programmer
+  fields:
+    bit:
+      name: Bit
+      description: Bit to turn off in the timer programmer.
+
+
+turn_on_bit:
+  name: Turn on a single Bit
+  description: Turn on a single bit in the programmer.
+  target:
+    entity:
+      domain: timer_programmer
+  fields:
+    bit:
+      name: Bit
+      description: Bit to turn on in the timer programmer.
