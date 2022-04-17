@@ -1,34 +1,25 @@
 """Component to allow timer_programmer support for platforms."""
 from __future__ import annotations
 
+import logging
 from dataclasses import dataclass
 from datetime import timedelta
-import logging
 from typing import Any, final
 
 import voluptuous as vol
-
 from homeassistant.backports.enum import StrEnum
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import ATTR_MODE
 from homeassistant.core import HomeAssistant, ServiceCall
 from homeassistant.helpers.config_validation import (  # noqa: F401
-    PLATFORM_SCHEMA,
-    PLATFORM_SCHEMA_BASE,
-)
+    PLATFORM_SCHEMA, PLATFORM_SCHEMA_BASE)
 from homeassistant.helpers.entity import Entity, EntityDescription
 from homeassistant.helpers.entity_component import EntityComponent
 from homeassistant.helpers.typing import ConfigType
 
-from .const import (
-    ATTR_BIT,
-    ATTR_VALUE,
-    DOMAIN,
-    SERVICE_SET_VALUE,
-    SERVICE_TOGGLE_BIT,
-    SERVICE_TURN_OFF_BIT,
-    SERVICE_TURN_ON_BIT,
-)
+from .const import (ATTR_BIT, ATTR_VALUE, DOMAIN, SERVICE_SET_VALUE,
+                    SERVICE_TOGGLE_BIT, SERVICE_TURN_OFF_BIT,
+                    SERVICE_TURN_ON_BIT)
 
 SCAN_INTERVAL = timedelta(seconds=30)
 
