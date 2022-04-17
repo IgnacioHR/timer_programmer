@@ -12,14 +12,22 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import ATTR_MODE
 from homeassistant.core import HomeAssistant, ServiceCall
 from homeassistant.helpers.config_validation import (  # noqa: F401
-    PLATFORM_SCHEMA, PLATFORM_SCHEMA_BASE)
+    PLATFORM_SCHEMA,
+    PLATFORM_SCHEMA_BASE,
+)
 from homeassistant.helpers.entity import Entity, EntityDescription
 from homeassistant.helpers.entity_component import EntityComponent
 from homeassistant.helpers.typing import ConfigType
 
-from .const import (ATTR_BIT, ATTR_VALUE, DOMAIN, SERVICE_SET_VALUE,
-                    SERVICE_TOGGLE_BIT, SERVICE_TURN_OFF_BIT,
-                    SERVICE_TURN_ON_BIT)
+from .const import (
+    ATTR_BIT,
+    ATTR_VALUE,
+    DOMAIN,
+    SERVICE_SET_VALUE,
+    SERVICE_TOGGLE_BIT,
+    SERVICE_TURN_OFF_BIT,
+    SERVICE_TURN_ON_BIT,
+)
 
 SCAN_INTERVAL = timedelta(seconds=30)
 
@@ -64,25 +72,37 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
     return True
 
 
-async def async_set_value(entity: TimerProgrammerEntity, service_call: ServiceCall) -> None:
+async def async_set_value(
+    entity: TimerProgrammerEntity, service_call: ServiceCall
+) -> None:
     """Service call wrapper to set a new value."""
     value = service_call.data["value"]
     await entity.async_set_value(value)
 
-async def async_toggle(entity: TimerProgrammerEntity, service_call: ServiceCall) -> None:
+
+async def async_toggle(
+    entity: TimerProgrammerEntity, service_call: ServiceCall
+) -> None:
     """Service call wrapper to set a new value."""
     bit = service_call.data["bit"]
     await entity.async_toggle(bit)
 
-async def async_turn_off(entity: TimerProgrammerEntity, service_call: ServiceCall) -> None:
+
+async def async_turn_off(
+    entity: TimerProgrammerEntity, service_call: ServiceCall
+) -> None:
     """Service call wrapper to set a new value."""
     bit = service_call.data["bit"]
     await entity.async_turn_off(bit)
 
-async def async_turn_on(entity: TimerProgrammerEntity, service_call: ServiceCall) -> None:
+
+async def async_turn_on(
+    entity: TimerProgrammerEntity, service_call: ServiceCall
+) -> None:
     """Service call wrapper to set a new value."""
     bit = service_call.data["bit"]
     await entity.async_turn_on(bit)
+
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up a config entry."""
@@ -124,20 +144,20 @@ class TimerProgrammerEntity(Entity):
         raise NotImplementedError()
 
     def is_on(self, bit: int) -> bool:
-      """Returns True if the corresponding bit is on."""
-      mask = 2**bit
-      return (self.value & mask) == mask
+        """Returns True if the corresponding bit is on."""
+        mask = 2**bit
+        return (self.value & mask) == mask
 
     async def async_set_value(self, value: int) -> None:
         """Set new value."""
         await self.hass.async_add_executor_job(self.set_value, value)
 
     def toggle(self, bit: int) -> None:
-      """Toggle a bit status."""
-      if self.is_on(bit):
-        self.turn_off(bit)
-      else:
-        self.turn_on(bit)
+        """Toggle a bit status."""
+        if self.is_on(bit):
+            self.turn_off(bit)
+        else:
+            self.turn_on(bit)
 
     async def async_toggle(self, bit: int) -> None:
         """Set new value."""
