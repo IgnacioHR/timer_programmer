@@ -1,7 +1,9 @@
 {
   "domain": "timer_programmer",
   "name": "Timer Programmer",
+  "version": "1.0.0",
   "documentation": "https://www.home-assistant.io/integrations/timer_programmmer",
   "codeowners": ["@IgnacioHR"],
-  "quality_scale": "internal"
+  "quality_scale": "internal",
+  "iot_class": "assumed_state"
 }

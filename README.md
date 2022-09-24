@@ -1,11 +1,11 @@
 # timer_programmer
-Home Assistant platform with support for a timer programmer
+Home Assistant platform with support for a Timer Switch
 
-A Timer Programmer is like a clock with dents between the hours, there are two dents per hour so in total, a day has 48 steps.
+A Timer Switch is like a clock with dents between the hours, there are two dents per hour so in total, a day has 48 switches; each one of them has a duration of 30 minutes.
 
-The UI that is currently using this platform shows the clock as an horizontal bar instead.
+This platform is generic, and it is used by Timer Switch in my Diematic Boiler integration. The UI that allows a user to interact with the timer switch shows the clock as an horizontal bar instead.
 
-Internally, the information is stored in a single int value using a bitset. Every bit corresponds to a period of 30 minutes period at bit 0 goes from 00:00 to 00:30, bit 1 goes from 00:30 to 01:00 and so on.
+Internally, the information is stored in a single int value using a bitset. As stated before, every bit corresponds to a period of 30 minutes period at bit 0 goes from 00:00 to 00:30, bit 1 goes from 00:30 to 01:00 and so on.
 
 # Current status
 
@@ -13,4 +13,4 @@ This is working for my integrarion. Set-up instructions will come later. Actuall
 
 # Note
 
-The is under development!
+I'm trying to add this code as an integration in HACS

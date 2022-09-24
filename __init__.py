@@ -7,7 +7,6 @@ from datetime import timedelta
 from typing import Any, final
 
 import voluptuous as vol
-from homeassistant.backports.enum import StrEnum
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import ATTR_MODE
 from homeassistant.core import HomeAssistant, ServiceCall
